@@ -21,7 +21,7 @@ const create = (req, res) => {
     password,
   } = req.body;
 
-  // check validation
+  
   if(!isValid) {
     return res.status(400).json(errors);
   }
