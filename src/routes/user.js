@@ -9,8 +9,9 @@ module.exports = (app) => {
   // create a new user
   app.post(
     '/api/users/create',
-    passport.authenticate('jwt', { session: false }),
-    allowOnly(config.accessLevels.admin, create)
+    // passport.authenticate('jwt', { session: false }),
+    // allowOnly(config.accessLevels.admin, create)
+    create
   );
 
   // user login

@@ -3,12 +3,14 @@ import passport from 'passport';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import models from './models'
+const categoryRoutes = require('./routes/categoryRoutes'); // Adjust the path as needed
+const productRoutes = require('./routes/productRoutes');
 
 const app = express();
 
 app.use(bodyParser.json());
 
-let port = process.env.PORT || 34567;
+let port = process.env.PORT || 3002;
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
@@ -35,6 +37,8 @@ require('./config/passport')(passport);
 app.get('/', (req, res) => res.send('Hello my World'));
 
 require('./routes/user.js')(app);
+app.use('/api', categoryRoutes);
+app.use('/api', productRoutes);
 
 //create a server
 var server = app.listen(port, function() {
